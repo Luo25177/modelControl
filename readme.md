@@ -10,6 +10,10 @@
 
 ## SMC 滑膜控制理论
 
+## high gain
+
+## high frequency
+
 ## PID 控制理论
 
 ## Hinfinty 控制
