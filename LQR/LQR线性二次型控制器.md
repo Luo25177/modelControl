@@ -6,13 +6,19 @@ $$
 x(k+1)=Ax(k)+Bu(k)
 $$
 
-二次型是指代价函数是二次型的J是二次型的。前一项中 $N$ 表示末端时刻， $x_d$ 是系统的参考，也就是目标，这个 $J$ 是末端代价， $S$ 为末端状态的权重矩阵，是一个对角阵， $Q$ 是运行过程中的权重矩阵， $R$ 是控制量的权重矩阵， $S$ 和 $Q$ 是 $N\times N$ 的，但是 $R$ 是 $P\times P$的，如果对某个元素要求大时可以对应的将 $R$ 增大，关键的是 $S$ 和 $Q$ 都是半正定阵， $R$ 为正定阵，只有这样系统才会有最小值，即 $s≥0,q≥0,r>0$
+二次型是指代价函数 $J$ 是二次型的。
+
+$$
+J=\frac{1}{2} x(N)^TSx(N)+\frac{1}{2}\sum_{k=0}^{N-1}{[x^T(k)Qx(k)+u^T(k)Ru(k)]}
+$$
+
+其中前一项中 $N$ 表示末端时刻， $x_d$ 是系统的参考，也就是目标，这个 $J$ 是末端代价， $S$ 为末端状态的权重矩阵，是一个对角阵， $Q$ 是运行过程中的权重矩阵， $R$ 是控制量的权重矩阵， $S$ 和 $Q$ 是 $N\times N$ 的，但是 $R$ 是 $P\times P$的，如果对某个元素要求大时可以对应的将 $R$ 增大，关键的是 $S$ 和 $Q$ 都是半正定阵， $R$ 为正定阵，只有这样系统才会有最小值，即 $s≥0,q≥0,r>0$
 
 对于一个系统来说，当 $x_d$ 为零时，该系统就是一个调节系统，不为零就是一个跟踪系统。
 
 ## LQR线性二次型调节器
 
-对应的调节二次型的LQR的雅各比矩阵就是
+对应的调节二次型的 LQR 的代价函数就是
 
 $$
 J=\frac{1}{2} x(N)^TSx(N)+\frac{1}{2}\sum_{k=0}^{N-1}{[x^T(k)Qx(k)+u^T(k)Ru(k)]}
@@ -34,7 +40,7 @@ $$
 J=\frac{1}{2} x(N)^TSx(N)+\frac{1}{2}\sum_{k=0}^{N-1}{[x^T(k)Qx(k)+u^T(k)Ru(k)]}\\k=N:J_{N\rightarrow N}^*=\frac{1}{2} x(N)^TSx(N)=\frac{1}{2} x(N)^TP(0)x(N);\ S=P(0)\\k=N-1:J_{N-1\rightarrow N}^* = \frac{1}{2} x(N)^TSx(N)+\frac{1}{2} x(N-1)^TQx(N-1)+\frac{1}{2}u(N-1)^TRu(N-1)=J^*_{N\rightarrow N}+\frac{1}{2} x(N-1)^TQx(N-1)+\frac{1}{2}u(N-1)^TRu(N-1)\\k=N-2:J_{N-2\rightarrow N}^* = \frac{1}{2} x(N)^TSx(N)+\frac{1}{2} x(N-1)^TQx(N-1)+\frac{1}{2}u(N-1)^TRu(N-1)+\frac{1}{2} x(N-2)^TQx(N-2)+\frac{1}{2}u(N-2)^TRu(N-2)\\=J_{N-1\rightarrow N}^*+\frac{1}{2} x(N-2)^TQx(N-2)+\frac{1}{2}u(N-2)^TRu(N-2)
 $$
 
-其中标*的表示最优解
+其中标 * 的表示最优解
 
 根据贝尔曼最优理论：
 
@@ -103,7 +109,7 @@ $$
 上式可为
 
 $$
-J_{N-1\rightarrow N}^* = \frac{1}{2}x(N-1)^TP(1)x(N-1)
+J_{N-1\rightarrow N}^* = \frac{1}{2}x(N-1)^TP(1)x(N-1)\\P(1)=(A-BF(N-1))^TP(0)(A-BF(N-1))+F(N-1)^TRF(N-1)+Q
 $$
 
 所以最终可以得到
@@ -207,7 +213,7 @@ grid on
 
 ## LQR线性二次型跟踪器
 
-跟踪二次型系统的LQR的雅各比矩阵为
+跟踪二次型系统的LQR的代价函数为
 
 $$
 J=\frac{1}{2} [x(n)-x_d(n))^TS(x(n)-x_d(n)]+\frac{1}{2}\sum_{k=0}^{N-1}{[x(k)-x_d(k))^T\Phi (x(k)-x_d(k)) + u(k)^TRu(k)]}
@@ -265,7 +271,7 @@ $$
 J=\frac{1}{2} x_a(N)^TS_ax_a(N)+\frac{1}{2}\sum_{k=0}^{N-1}{[x_a^T(k)Q_ax_a(k)+u^T(k)Ru(k)]}
 $$
 
-与LQR调节器求解过程相同，得最终结果为
+与 LQR 调节器求解过程相同，得最终结果为
 
 $$
 \left\{\begin{aligned}&J^*_{N-k\rightarrow N}=\frac{1}{2}x_a(N-k)^TP_a(k)x_a(N-k)\\&F_a(N-k)=(B_a^TP_a(k-1)B_a+R)^{-1}B_a^TP_a(k-1)A_a\\&P_a(k)=(A_a-B_aF_a(N-k))^TP_a(k-1)(A_a-B_aF_a(N-k))+F_a(N-k)^TRF_a(N-k)+Q_a\\&u(N-k)=-F_a(N-k)x_a(N-k)\end{aligned}\right.
@@ -344,6 +350,262 @@ xlim([1, k_steps]);
 grid on
 ```
 
-## 总结
+## LQR线性二次型跟踪器——稳态非零参考值控制
 
-$F$ 和 $F_a$ 都是可以提前算好的，实际上的输出结果就是一个 PD 控制器
+对于一个系统（这是系统的状态方程的递推形式）
+
+$$
+x_{k+1}=Ax_k+Bu_k
+$$
+
+由于 LQR线性二次型跟踪器 在应对 R 过大时，也就是太过于注重节能的话，系统的输入就会为 0，这将导致系统不运作，所以有了这个控制模式
+
+对于有些系统，处于某个目标状态并且稳定时，它所需要的输入/输出是一个非 0 的值，这个输入 $u_d$ 将会使系统保持稳定在目标位置，也就是
+
+$$
+x_d=Ax_d+Bu_d
+$$
+
+所以需要定义稳态输入误差
+
+$$
+\Delta u_k=u_k-u_d
+$$
+
+带入到状态方程中就是
+
+$$
+x_{k+1}=Ax_k+B(\Delta u_k+u_d)=Ax_k+B\Delta u_k+(I-A)x_d
+$$
+
+这里的话就可以得到一个增广矩阵，其中 $x_d$ 为常数，并且定义误差矩阵
+
+$$
+x_a[k+1]=\begin{bmatrix}x_{k+1}\\x_d\end{bmatrix}=\begin{bmatrix}A&I-A\\0&I\end{bmatrix}\begin{bmatrix}x_k\\x_d\end{bmatrix}+\begin{bmatrix}B\\0\end{bmatrix}\Delta u_k\\\Downarrow\\x_a[k+1]=A_ax_a[k]+B_a\Delta u_k\\e_k=x_k-x_d=\begin{bmatrix}I&-I\end{bmatrix}\begin{bmatrix}x_k\\x_d\end{bmatrix}=C_ax_a[k]
+$$
+
+列出代价函数，前面部分的计算都是与线性二次型跟踪器是一致的，只有第二部分是不一样的，这里的代价函数为
+
+$$
+J=\frac{1}{2} e(N)^TSe(N)+\frac{1}{2}\sum_{k=0}^{N-1}{[e^T(k)Qe(k)+\Delta u^T(k)R\Delta u(k)]}
+$$
+
+令 $S_a=C_a^TSC_a$， $Q_a=C_a^TQC_a$，得
+
+$$
+J=\frac{1}{2} x_a(N)^TS_ax_a(N)+\frac{1}{2}\sum_{k=0}^{N-1}{[x_a^T(k)Q_ax_a(k)+\Delta u^T(k)R\Delta u(k)]}
+$$
+
+其中第二项就表示系统的稳态输入误差，表示输入偏离目标位置的距离
+
+与 LQR 调节器求解过程相同，得最终结果为
+
+$$
+\left\{\begin{aligned}&J^*_{N-k\rightarrow N}=\frac{1}{2}x_a(N-k)^TP_a(k)x_a(N-k)\\&F_a(N-k)=(B_a^TP_a(k-1)B_a+R)^{-1}B_a^TP_a(k-1)A_a\\&P_a(k)=(A_a-B_aF_a(N-k))^TP_a(k-1)(A_a-B_aF_a(N-k))+F_a(N-k)^TRF_a(N-k)+Q_a\\&\Delta u(N-k)=-F_a(N-k)x_a(N-k)\\&u(N-k)=u_d+\Delta u(N-k)\end{aligned}\right.
+$$
+
+## LQR线性二次型跟踪器——输入增量控制
+
+上述中 $x_d$ 是一个常数，所以这里讨论 $x_d$ 为非常数的变化，并且设置
+
+$$
+x_d[k+1]=A_dx_d[k]
+$$
+
+定义一个 $u$ 的增量 
+
+$$
+\Delta u_k=u_k-u_{k-1}\\u_k=\Delta u_k+u_{k-1}
+$$
+
+这个可以使得系统的输入更加平滑，输入的变化不那么剧烈。带入到系统状态方程中
+
+$$
+x_{k+1}=Ax_k+B\Delta u_k+u_{k-1}
+$$
+
+此时设置增广矩阵
+
+$$
+x_a[k]=\begin{bmatrix}x_{k}\\x_d[k]\\u_{k-1}\end{bmatrix}\\\Downarrow\\e_k=x_k-x_d[k]=\begin{bmatrix}I&-I&0\end{bmatrix}\begin{bmatrix}x_{k}\\x_d[k]\\u_{k-1}\end{bmatrix}=C_ax_a[k]
+$$
+
+并且可以得到系统的递归函数
+
+$$
+x_a[k+1]=\begin{bmatrix}x_{k+1}\\x_d[k+1]\\u_{k}\end{bmatrix}=\begin{bmatrix}A&0&B\\0&A_d&0\\0&0&I\end{bmatrix}\begin{bmatrix}x_k\\x_d[k]\\u_{k-1}\end{bmatrix}+\begin{bmatrix}B\\0\\I\end{bmatrix}\Delta u_k
+$$
+
+系统的代价函数可以设计为
+
+$$
+J=\frac{1}{2} e(N)^TSe(N)+\frac{1}{2}\sum_{k=0}^{N-1}{[e^T(k)Qe(k)+\Delta u^T(k)R\Delta u(k)]}
+$$
+
+令 $S_a=C_a^TSC_a$， $Q_a=C_a^TQC_a$，得
+
+$$
+J=\frac{1}{2} x_a(N)^TS_ax_a(N)+\frac{1}{2}\sum_{k=0}^{N-1}{[x_a^T(k)Q_ax_a(k)+\Delta u^T(k)R\Delta u(k)]}
+$$
+
+与 LQR 调节器求解过程相同，得最终结果为
+
+$$
+\left\{\begin{aligned}&J^*_{N-k\rightarrow N}=\frac{1}{2}x_a(N-k)^TP_a(k)x_a(N-k)\\&F_a(N-k)=(B_a^TP_a(k-1)B_a+R)^{-1}B_a^TP_a(k-1)A_a\\&P_a(k)=(A_a-B_aF_a(N-k))^TP_a(k-1)(A_a-B_aF_a(N-k))+F_a(N-k)^TRF_a(N-k)+Q_a\\&\Delta u(N-k)=-F_a(N-k)x_a(N-k)\\&u(N-k)=u(N-k-1)+\Delta u(N-k)\end{aligned}\right.
+$$
+
+## LQR线性二次调节器——系统输入线性化
+
+这一部分实际上就是工程上比较常用的，将 LQR 控制器的输入 u 定义为 $u=-Ke$ 的形式，一种线性反馈控制器，最后成为一个近似于 PD 控制器
+
+连续系统
+
+$$
+\dot{x}=Ax+Bu\\e=x_d-x\\\dot{x_d}=A_dx_d
+$$
+
+定义连续系统代价函数，由于 $t→\infty, e→0$
+
+$$
+J=\frac{1}{2} e^T(t_f)Se(t_f)+\frac{1}{2}\int_{0}^{t_f}{[e^TQe+u^TRu]}dt
+$$
+
+$$
+e(k)=x(k)-x_d(k)=\begin{bmatrix}I&&-I\end{bmatrix}\begin{bmatrix}x(k)\\x_d(k)\end{bmatrix}=C_ax_a(k)
+$$
+
+设计最优控制
+
+$$
+u=-Ke=-KC_ax_a
+$$
+
+可以得到
+
+$$
+\dot{x}_a=\begin{bmatrix}A&0\\0&A_d\end{bmatrix}x_a+\begin{bmatrix}B\\0\end{bmatrix}u=\begin{bmatrix}A-BKC_a&0\\0&A_d\end{bmatrix}x_a\\\dot{x}_a=A_cx_a+B_cu=A_ax_a
+$$
+
+其中
+
+$$
+\left\{\begin{aligned}&A_a=\begin{bmatrix}A&&0\\0&&A_0\end{bmatrix}\\&B_a=\begin{bmatrix}B\\0\end{bmatrix}\\&C_a=\begin{bmatrix}I&&-I\end{bmatrix}\end{aligned}\right.
+$$
+
+对应的代价函数为
+
+$$
+J=\frac{1}{2} e(t_f)^TSe(t_f)+\frac{1}{2}\int_{0}^{t_f}{[e^TQe+u^TRu]}dt
+$$
+
+带入上式为
+
+$$
+J=\frac{1}{2} x_a(t_f)^TC_a^TSC_ax_a(t_f)+\frac{1}{2}\int_{0}^{t_f}{[x_a^TC_a^TQC_ax_a+u^TRu]}dt
+$$
+
+令 $S_a=C_a^TSC_a$， $Q_a=C_a^TQC_a$，得
+
+$$
+J=\frac{1}{2} x_a^T(t_f)S_ax_a(t_f)+\frac{1}{2}\int_{0}^{t_f}{[x_a^TQ_ax_a+u^TRu]}dt
+$$
+
+将 $u=-Ke$ 带入到代价函数中去
+
+$$
+J=\frac{1}{2} x_a^T(t_f)S_ax_a(t_f)+\frac{1}{2}\int_{0}^{t_f}{x_a^T(Q_a+K^TRK)x_a}dt
+$$
+
+**第一种解法**
+
+可以假设存在一个向量 P，使得
+
+$$
+\frac{d}{dt}(x_a^TPx_a)=-x_a^T(Q_a+K^TRK)x_a~~\textcircled{1}
+$$
+
+假设系统是稳定的（实际上需要验证），带入代价函数中得到
+
+$$
+J=\frac{1}{2}x^T_a(0)Px_a(0)
+$$
+
+将 1 式左侧微分展开，并且把 $x_a$ 微分形式替换
+
+$$
+\dot{x}_a^TPx_a+x_a^TP\dot{x}_a+x_a^T(Q_a+K^TRK)x_a=0\\x_a^TA_a^TPx_a+x_a^TPA_ax_a+x_a^T(Q_a+K^TRK)x_a=0\\x_a^T(A_a^TP+PA_a+Q_a+K^TRK)x_a=0
+$$
+
+要想式子成立，括号里必须始终为 0
+
+$$
+A_a^TP+PA_a+Q_a+K^TRK=0
+$$
+
+这就是 $Riccati$ 方程
+
+**第二种解法**
+
+$$
+J=\frac{1}{2} x_a^T(t_f)S_ax_a(t_f)+\frac{1}{2}\int_{0}^{t_f}{[x_a^TQ_ax_a+u^TRu]}dt
+$$
+
+由于函数第一项是恒定的数值，所以只考虑第二项的最小值就好，也就是
+
+$$
+min\int_{0}^{t_f}{[x_a^TQ_ax_a+u^TRu]}dt
+$$
+
+引入哈密顿函数
+
+$$
+H=f(x_a,u)+\lambda g(x_a,u)=x_a^TQ_ax_a+u^TRu+\lambda(A_cx_a+B_cu)
+$$
+
+$$
+\frac{\partial H}{\partial u}=(R+R^T)u+B_c^T\lambda=0\\\Downarrow\\u=-(R+R^T)^{-1}B_c^T\lambda
+$$
+
+$$
+-\frac{\partial H}{\partial x}=-(f_x+\lambda g_x)=-[(Q_a+Q_a^T)x_a+A^T\lambda]=\dot\lambda\\\frac{\partial H}{\partial \lambda}=g=A_cx_a+B_cu=A_cx-B_c(R+R^T)^{-1}B_c^T\lambda=\dot{x}_a
+$$
+
+由于我们设定 $u=-Kx_a$，所以可以知道 $\lambda=Px_a$，并且 $-(R+R^T)^{-1}B_c^TP=K$
+
+带入上述的方程得到
+
+$$
+\dot\lambda=-[(Q_a+Q_a^T)x_a+A_c^T\lambda]=-(Q_a+Q_a^T+A_c^TP)x_a\\\dot{x}_a=A_cx-B_c(R+R^T)^{-1}B_c^T\lambda=[A_c-B_c(R+R^T)^{-1}B_c^TP]x_a
+$$
+
+联立得到
+
+$$
+\dot{\lambda}=\dot{P}x_a+P\dot{x}_a=[\dot{P}+P(A_c-B_c(R+R^T)^{-1}B_c^TP)]x_a=-(Q_a+Q_a^T+A_c^TP)x_a
+$$
+
+所以得到
+
+$$
+\dot{P}+PA_c-PB_c(R+R^T)^{-1}B_c^TP+Q_a+Q_a^T+A_c^TP=0
+$$
+
+令 $Q_1=Q_a+Q_a^T,Q_2=R+R^T$，得到
+
+$$
+\dot{P}+PA_c-PB_cQ_2^{-1}B_c^TP+Q_1+A_c^TP=0
+$$
+
+由于是一个线性的控制器，所以我们定义 $\dot{P}$ 是个常数
+
+$$
+PA_c-PB_cQ_2^{-1}B_c^TP+Q_1+A_c^TP=0
+$$
+
+最终得到一个 $Riccati$ 方程
+
+### 总结
+
+输入系统线性化相当于是得到了一个线性的输入， $u=-Kx$ 这个 $K$ 可以通过解算 $Riccati$ 方程得到解，并且将会是一个固定的常数，所以最终的控制有点像 PD 控制器
+
+在 matlab 中直接调用 `lqr` 函数就可以得到对应的 $K$
