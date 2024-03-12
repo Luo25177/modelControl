@@ -35,7 +35,7 @@ WW1 = dec2mat(lmisys,xfeas,W);
 K1 = WW1 * inv(XX1);
 
 %% 状态反馈次优gamma-Hinfinty 控制器
-gamma = 2;
+gamma = 10;
 setlmis([]);
 X = lmivar(1, [syssize 1]);
 W = lmivar(2, [1 syssize]);
