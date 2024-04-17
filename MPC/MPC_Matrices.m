@@ -1,4 +1,4 @@
-function  [E , H]=MPC_Matrices(A,B,Q,R,F,N)
+function  [E, H]=MPC_Matrices(A,B,Q,R,F,N)
     n=size(A,1);   % A 是 n x n 矩阵, 得到 n
     p=size(B,2);   % B 是 n x p 矩阵, 得到 p
     %%%%%%%%%%%%

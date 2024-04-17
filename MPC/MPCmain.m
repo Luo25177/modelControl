@@ -20,7 +20,7 @@ x_k(:, 1) = [20; -20];
 u_k = zeros(p, k_step);
 
 N = 5; % 预测区间
-[E, H] = MPC_Matrices(A, B,Q, R, F, N);
+[E, H] = MPC_Matrices(A, B, Q, R, F, N);
 
 for k = 1: k_step
     u_k(:, k) = Prediction(x_k(:, k), E, H, N, p);
@@ -44,3 +44,4 @@ for i = 1: size(x_k, 1)
 
 end
 legend("u1", "u2");
+
