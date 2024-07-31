@@ -1,3 +1,6 @@
 .vscode
 *.slxc
 slprj
+build
+Makefile
+.vs

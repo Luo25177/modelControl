@@ -1,0 +1,37 @@
+﻿D:\Software\VS\IDE\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(541,5): warning MSB8029: 中间目录或输出目录无法驻留在临时目录下，因为这可能会导致增量生成出现问题。
+  WBC_controller.cpp
+E:\Cpplabrary\eigen-3.4.0\eigen-3.4.0\Eigen\src\Core\arch\Default\Half.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“WBC_controller.cpp”)
+  
+E:\Cpplabrary\eigen-3.4.0\eigen-3.4.0\Eigen\src\Core\arch\Default\BFloat16.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“WBC_controller.cpp”)
+  
+E:\Cpplabrary\eigen-3.4.0\eigen-3.4.0\Eigen\src\Core\arch\Default\GenericPacketMathFunctions.h(676,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“WBC_controller.cpp”)
+  
+E:\pragma_data\matlabPRO\modelControl\WBC\controllers\WBC_controller\WBC_controller.cpp(15,10): warning C4244: “初始化”: 从“Eigen::Index”转换到“int”，可能丢失数据
+E:\pragma_data\matlabPRO\modelControl\WBC\controllers\WBC_controller\WBC_controller.cpp(16,10): warning C4244: “初始化”: 从“Eigen::Index”转换到“int”，可能丢失数据
+E:\pragma_data\matlabPRO\modelControl\WBC\controllers\WBC_controller\WBC_controller.cpp(57,18): warning C4305: “初始化”: 从“double”到“float”截断
+E:\pragma_data\matlabPRO\modelControl\WBC\controllers\WBC_controller\WBC_controller.cpp(60,12): warning C4305: “初始化”: 从“double”到“float”截断
+E:\pragma_data\matlabPRO\modelControl\WBC\controllers\WBC_controller\WBC_controller.cpp(61,12): warning C4305: “初始化”: 从“double”到“float”截断
+E:\pragma_data\matlabPRO\modelControl\WBC\controllers\WBC_controller\WBC_controller.cpp(62,12): warning C4305: “初始化”: 从“double”到“float”截断
+E:\pragma_data\matlabPRO\modelControl\WBC\controllers\WBC_controller\WBC_controller.cpp(78,43): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\pragma_data\matlabPRO\modelControl\WBC\controllers\WBC_controller\WBC_controller.cpp(79,43): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\pragma_data\matlabPRO\modelControl\WBC\controllers\WBC_controller\WBC_controller.cpp(80,43): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+E:\pragma_data\matlabPRO\modelControl\WBC\controllers\WBC_controller\WBC_controller.cpp(110,32): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\pragma_data\matlabPRO\modelControl\WBC\controllers\WBC_controller\WBC_controller.cpp(111,32): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\pragma_data\matlabPRO\modelControl\WBC\controllers\WBC_controller\WBC_controller.cpp(112,32): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\Software\VS\IDE\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1151,5): error MSB6003: 指定的任务可执行文件“link.exe”未能运行。System.IO.IOException: 磁盘空间不足。
+D:\Software\VS\IDE\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1151,5): error MSB6003: 
+D:\Software\VS\IDE\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1151,5): error MSB6003:    在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+D:\Software\VS\IDE\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1151,5): error MSB6003:    在 System.IO.FileStream.WriteCore(Byte[] buffer, Int32 offset, Int32 count)
+D:\Software\VS\IDE\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1151,5): error MSB6003:    在 System.IO.FileStream.FlushWrite(Boolean calledFromFinalizer)
+D:\Software\VS\IDE\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1151,5): error MSB6003:    在 System.IO.FileStream.Dispose(Boolean disposing)
+D:\Software\VS\IDE\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1151,5): error MSB6003:    在 System.IO.Stream.Close()
+D:\Software\VS\IDE\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1151,5): error MSB6003:    在 System.IO.StreamWriter.Dispose(Boolean disposing)
+D:\Software\VS\IDE\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1151,5): error MSB6003:    在 System.IO.TextWriter.Dispose()
+D:\Software\VS\IDE\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1151,5): error MSB6003:    在 Microsoft.Build.Utilities.ToolTask.GetTemporaryResponseFile(String responseFileCommands, String& responseFileSwitch)
+D:\Software\VS\IDE\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1151,5): error MSB6003:    在 Microsoft.Build.Utilities.ToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands)
+D:\Software\VS\IDE\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1151,5): error MSB6003:    在 Microsoft.Build.CPPTasks.TrackedVCToolTask.TrackerExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands)
+D:\Software\VS\IDE\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1151,5): error MSB6003:    在 Microsoft.Build.CPPTasks.TrackedVCToolTask.ExecuteTool(String pathToTool, String responseFileCommands, String commandLineCommands)
+D:\Software\VS\IDE\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1151,5): error MSB6003:    在 Microsoft.Build.Utilities.ToolTask.Execute()
